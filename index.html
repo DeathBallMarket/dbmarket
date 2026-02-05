@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Ball Market | Crimson Edition</title>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #111111;
+            --death-red: #ff0000;
+            --dark-red: #8b0000;
+            --text-main: #ffffff;
+            --text-dim: #999999;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background: rgba(0, 0, 0, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--dark-red);
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--death-red);
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+        }
+        .hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a0000 0%, #050505 100%);
+        }
+        .hero h1 { font-size: 4rem; margin: 0; font-style: italic; }
+        .hero span { color: var(--death-red); }
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            background: var(--death-red);
+            color: white;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+        .market-container { padding: 60px 10%; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .item-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 25px;
+            text-align: center;
+        }
+        .item-icon { font-size: 60px; display: block; margin-bottom: 10px; }
+        .price { display: block; margin: 15px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Death Ball <span>Market</span></div>
+        <div class="nav-links">
+            <a href="#">Inventory</a>
+            <a href="#">Trading</a>
+            <a href="#">Values</a>
+        </div>
+    </nav>
+    <header class="hero">
+        <h1>STRIKE <span>HARD</span></h1>
+        <p>THE ULTIMATE DESTINATION FOR EXCLUSIVE DEATH BALL ITEMS</p>
+        <button class="btn">Enter Marketplace</button>
+    </header>
+    <section class="market-container">
+        <h2 style="border-left: 5px solid var(--death-red); padding-left: 15px;">NEW DROPS</h2>
+        <div class="grid" id="market-grid"></div>
+    </section>
+    <script>
+        const items = [
+            { name: "Sanguine Blade", price: "12,000", rarity: "Mythic", img: "🩸" },
+            { name: "Blood Explosion", price: "3,500", rarity: "Legendary", img: "💥" },
+            { name: "Demon Katana", price: "5,200", rarity: "Mythic", img: "👺" },
+            { name: "Dark Matter", price: "1,800", rarity: "Rare", img: "🌑" },
+        ];
+        const grid = document.getElementById('market-grid');
+        grid.innerHTML = items.map(item => `
+            <div class="item-card">
+                <span class="item-icon">${item.img}</span>
+                <h3>${item.name}</h3>
+                <div style="color: ${item.rarity === 'Mythic' ? 'red' : '#888'}">${item.rarity}</div>
+                <span class="price">${item.price} GEMS</span>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Ball Market | Crimson Edition</title>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #111111;
+            --death-red: #ff0000;
+            --dark-red: #8b0000;
+            --text-main: #ffffff;
+            --text-dim: #999999;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background: rgba(0, 0, 0, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--dark-red);
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--death-red);
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+        }
+        .hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a0000 0%, #050505 100%);
+        }
+        .hero h1 { font-size: 4rem; margin: 0; font-style: italic; }
+        .hero span { color: var(--death-red); }
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            background: var(--death-red);
+            color: white;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+        .market-container { padding: 60px 10%; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .item-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 25px;
+            text-align: center;
+        }
+        .item-icon { font-size: 60px; display: block; margin-bottom: 10px; }
+        .price { display: block; margin: 15px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Death Ball <span>Market</span></div>
+        <div class="nav-links">
+            <a href="#">Inventory</a>
+            <a href="#">Trading</a>
+            <a href="#">Values</a>
+        </div>
+    </nav>
+    <header class="hero">
+        <h1>STRIKE <span>HARD</span></h1>
+        <p>THE ULTIMATE DESTINATION FOR EXCLUSIVE DEATH BALL ITEMS</p>
+        <button class="btn">Enter Marketplace</button>
+    </header>
+    <section class="market-container">
+        <h2 style="border-left: 5px solid var(--death-red); padding-left: 15px;">NEW DROPS</h2>
+        <div class="grid" id="market-grid"></div>
+    </section>
+    <script>
+        const items = [
+            { name: "Sanguine Blade", price: "12,000", rarity: "Mythic", img: "🩸" },
+            { name: "Blood Explosion", price: "3,500", rarity: "Legendary", img: "💥" },
+            { name: "Demon Katana", price: "5,200", rarity: "Mythic", img: "👺" },
+            { name: "Dark Matter", price: "1,800", rarity: "Rare", img: "🌑" },
+        ];
+        const grid = document.getElementById('market-grid');
+        grid.innerHTML = items.map(item => `
+            <div class="item-card">
+                <span class="item-icon">${item.img}</span>
+                <h3>${item.name}</h3>
+                <div style="color: ${item.rarity === 'Mythic' ? 'red' : '#888'}">${item.rarity}</div>
+                <span class="price">${item.price} GEMS</span>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Ball Market | Crimson Edition</title>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #111111;
+            --death-red: #ff0000;
+            --dark-red: #8b0000;
+            --text-main: #ffffff;
+            --text-dim: #999999;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background: rgba(0, 0, 0, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--dark-red);
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--death-red);
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+        }
+        .hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a0000 0%, #050505 100%);
+        }
+        .hero h1 { font-size: 4rem; margin: 0; font-style: italic; }
+        .hero span { color: var(--death-red); }
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            background: var(--death-red);
+            color: white;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+        .market-container { padding: 60px 10%; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .item-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 25px;
+            text-align: center;
+        }
+        .item-icon { font-size: 60px; display: block; margin-bottom: 10px; }
+        .price { display: block; margin: 15px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Death Ball <span>Market</span></div>
+        <div class="nav-links">
+            <a href="#">Inventory</a>
+            <a href="#">Trading</a>
+            <a href="#">Values</a>
+        </div>
+    </nav>
+    <header class="hero">
+        <h1>STRIKE <span>HARD</span></h1>
+        <p>THE ULTIMATE DESTINATION FOR EXCLUSIVE DEATH BALL ITEMS</p>
+        <button class="btn">Enter Marketplace</button>
+    </header>
+    <section class="market-container">
+        <h2 style="border-left: 5px solid var(--death-red); padding-left: 15px;">NEW DROPS</h2>
+        <div class="grid" id="market-grid"></div>
+    </section>
+    <script>
+        const items = [
+            { name: "Sanguine Blade", price: "12,000", rarity: "Mythic", img: "🩸" },
+            { name: "Blood Explosion", price: "3,500", rarity: "Legendary", img: "💥" },
+            { name: "Demon Katana", price: "5,200", rarity: "Mythic", img: "👺" },
+            { name: "Dark Matter", price: "1,800", rarity: "Rare", img: "🌑" },
+        ];
+        const grid = document.getElementById('market-grid');
+        grid.innerHTML = items.map(item => `
+            <div class="item-card">
+                <span class="item-icon">${item.img}</span>
+                <h3>${item.name}</h3>
+                <div style="color: ${item.rarity === 'Mythic' ? 'red' : '#888'}">${item.rarity}</div>
+                <span class="price">${item.price} GEMS</span>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Ball Market | Crimson Edition</title>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #111111;
+            --death-red: #ff0000;
+            --dark-red: #8b0000;
+            --text-main: #ffffff;
+            --text-dim: #999999;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10%;
+            background: rgba(0, 0, 0, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--dark-red);
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--death-red);
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+        }
+        .hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a0000 0%, #050505 100%);
+        }
+        .hero h1 { font-size: 4rem; margin: 0; font-style: italic; }
+        .hero span { color: var(--death-red); }
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            background: var(--death-red);
+            color: white;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+        .market-container { padding: 60px 10%; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .item-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 25px;
+            text-align: center;
+        }
+        .item-icon { font-size: 60px; display: block; margin-bottom: 10px; }
+        .price { display: block; margin: 15px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Death Ball <span>Market</span></div>
+        <div class="nav-links">
+            <a href="#">Inventory</a>
+            <a href="#">Trading</a>
+            <a href="#">Values</a>
+        </div>
+    </nav>
+    <header class="hero">
+        <h1>STRIKE <span>HARD</span></h1>
+        <p>THE ULTIMATE DESTINATION FOR EXCLUSIVE DEATH BALL ITEMS</p>
+        <button class="btn">Enter Marketplace</button>
+    </header>
+    <section class="market-container">
+        <h2 style="border-left: 5px solid var(--death-red); padding-left: 15px;">NEW DROPS</h2>
+        <div class="grid" id="market-grid"></div>
+    </section>
+    <script>
+        const items = [
+            { name: "Sanguine Blade", price: "12,000", rarity: "Mythic", img: "🩸" },
+            { name: "Blood Explosion", price: "3,500", rarity: "Legendary", img: "💥" },
+            { name: "Demon Katana", price: "5,200", rarity: "Mythic", img: "👺" },
+            { name: "Dark Matter", price: "1,800", rarity: "Rare", img: "🌑" },
+        ];
+        const grid = document.getElementById('market-grid');
+        grid.innerHTML = items.map(item => `
+            <div class="item-card">
+                <span class="item-icon">${item.img}</span>
+                <h3>${item.name}</h3>
+                <div style="color: ${item.rarity === 'Mythic' ? 'red' : '#888'}">${item.rarity}</div>
+                <span class="price">${item.price} GEMS</span>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>
