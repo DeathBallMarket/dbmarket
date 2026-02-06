@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace | Death Ball</title>
+    <style>
+        :root { --bg: #050505; --card: #111; --red: #ff0000; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; }
+        nav { padding: 15px 10%; background: #000; border-bottom: 2px solid #8b0000; display: flex; justify-content: space-between; }
+        .container { padding: 40px 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+        .item-card { background: var(--card); border: 1px solid #222; padding: 20px; text-align: center; }
+        .item-card:hover { border-color: var(--red); }
+        .price { color: #ffd700; font-weight: bold; display: block; margin: 10px 0; }
+        .btn-add { background: var(--red); color: white; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; }
+        input { background: #222; border: 1px solid #444; color: white; padding: 10px; margin-bottom: 10px; width: 200px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" style="color:red; text-decoration:none; font-weight:bold;">← BACK</a>
+        <div style="font-weight:900;">MARKETPLACE</div>
+        <div></div>
+    </nav>
+
+    <div class="container">
+        <h2>Active Listings</h2>
+        <div style="background:#1a1a1a; padding: 20px; border-radius: 8px;">
+            <h3>Create Listing</h3>
+            <input type="text" id="name" placeholder="Blade Name">
+            <input type="number" id="price" placeholder="Gems">
+            <button class="btn-add" onclick="add()">Post</button>
+        </div>
+
+        <div class="grid" id="grid"></div>
+    </div>
+
+    <script>
+        let items = [
+            { name: "Sanguine Blade", price: "12,000", img: "🩸" },
+            { name: "Blood Explosion", price: "3,500", img: "💥" }
+        ];
+
+        function render() {
+            document.getElementById('grid').innerHTML = items.map(i => `
+                <div class="item-card">
+                    <div style="font-size:40px">${i.img || '⚔️'}</div>
+                    <h4>${i.name}</h4>
+                    <span class="price">${i.price} GEMS</span>
+                    <button class="btn-add" style="font-size:10px">Buy Now</button>
+                </div>
+            `).join('');
+        }
+
+        function add() {
+            const n = document.getElementById('name').value;
+            const p = document.getElementById('price').value;
+            if(n && p) {
+                items.unshift({name: n, price: p});
+                render();
+            }
+        }
+        render();
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace | Death Ball</title>
+    <style>
+        :root { --bg: #050505; --card: #111; --red: #ff0000; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; }
+        nav { padding: 15px 10%; background: #000; border-bottom: 2px solid #8b0000; display: flex; justify-content: space-between; }
+        .container { padding: 40px 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
+        .item-card { background: var(--card); border: 1px solid #222; padding: 20px; text-align: center; }
+        .item-card:hover { border-color: var(--red); }
+        .price { color: #ffd700; font-weight: bold; display: block; margin: 10px 0; }
+        .btn-add { background: var(--red); color: white; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; }
+        input { background: #222; border: 1px solid #444; color: white; padding: 10px; margin-bottom: 10px; width: 200px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" style="color:red; text-decoration:none; font-weight:bold;">← BACK</a>
+        <div style="font-weight:900;">MARKETPLACE</div>
+        <div></div>
+    </nav>
+
+    <div class="container">
+        <h2>Active Listings</h2>
+        <div style="background:#1a1a1a; padding: 20px; border-radius: 8px;">
+            <h3>Create Listing</h3>
+            <input type="text" id="name" placeholder="Blade Name">
+            <input type="number" id="price" placeholder="Gems">
+            <button class="btn-add" onclick="add()">Post</button>
+        </div>
+
+        <div class="grid" id="grid"></div>
+    </div>
+
+    <script>
+        let items = [
+            { name: "Sanguine Blade", price: "12,000", img: "🩸" },
+            { name: "Blood Explosion", price: "3,500", img: "💥" }
+        ];
+
+        function render() {
+            document.getElementById('grid').innerHTML = items.map(i => `
+                <div class="item-card">
+                    <div style="font-size:40px">${i.img || '⚔️'}</div>
+                    <h4>${i.name}</h4>
+                    <span class="price">${i.price} GEMS</span>
+                    <button class="btn-add" style="font-size:10px">Buy Now</button>
+                </div>
+            `).join('');
+        }
+
+        function add() {
+            const n = document.getElementById('name').value;
+            const p = document.getElementById('price').value;
+            if(n && p) {
+                items.unshift({name: n, price: p});
+                render();
+            }
+        }
+        render();
+    </script>
+</body>
+</html>
