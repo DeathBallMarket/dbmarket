@@ -5,165 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Death Ball Market</title>
     <style>
-        :root {
-            --bg-dark: #050505;
-            --card-bg: #111111;
-            --death-red: #ff0000;
-            --dark-red: #8b0000;
-            --text-main: #ffffff;
-            --text-dim: #999999;
+        :root { --bg: #050505; --red: #ff0000; --text: #fff; }
+        body { 
+            margin: 0; font-family: 'Segoe UI', sans-serif; 
+            background: var(--bg); color: var(--text);
+            height: 100vh; display: flex; flex-direction: column;
         }
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
+        nav { padding: 20px 10%; border-bottom: 2px solid #8b0000; display: flex; justify-content: space-between; }
+        .logo { font-weight: 900; color: var(--red); text-transform: uppercase; }
+        .hero { 
+            flex: 1; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle, #1a0000 0%, #050505 100%);
         }
-
-        /* Nav */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 10%; background: #000; border-bottom: 2px solid var(--dark-red);
-        }
-        .logo { font-size: 1.6rem; font-weight: 900; text-transform: uppercase; color: var(--death-red); cursor: pointer; }
-        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 30px; font-weight: 600; cursor: pointer; }
-
-        /* Views Visibility */
-        .view { display: none; padding: 40px 10%; }
-        .view.active { display: block; }
-
-        /* Home View */
-        #home-view { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero-btns { display: flex; gap: 20px; margin-top: 30px; }
-
-        /* Market View */
-        .market-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-        
-        /* Listing Form */
-        .form-container { background: var(--card-bg); padding: 20px; border: 1px solid var(--dark-red); margin-bottom: 40px; border-radius: 8px; }
-        .form-container input, .form-container select { 
-            background: #222; border: 1px solid #444; color: white; padding: 10px; margin-right: 10px; border-radius: 4px; 
-        }
-
-        /* Cards */
-        .item-card { background: var(--card-bg); border: 1px solid #222; padding: 20px; text-align: center; transition: 0.3s; }
-        .item-card:hover { border-color: var(--death-red); transform: translateY(-5px); }
-        .item-icon { font-size: 50px; display: block; margin-bottom: 10px; }
-
+        h1 { font-size: 4rem; font-style: italic; margin: 0; }
+        h1 span { color: var(--red); }
         .btn {
-            padding: 12px 30px; border: none; font-weight: 800; cursor: pointer;
-            text-transform: uppercase; background: var(--death-red); color: white;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            margin-top: 30px; padding: 15px 40px; background: var(--red); color: white;
+            text-decoration: none; font-weight: 800; text-transform: uppercase;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: 0.3s;
         }
-        .btn-small { padding: 8px 15px; font-size: 12px; clip-path: none; border-radius: 4px; }
+        .btn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,0,0,0.5); }
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="logo" onclick="showView('home-view')">Death Ball <span>Market</span></div>
-        <div class="nav-links">
-            <a onclick="showView('market-view')">Marketplace</a>
-            <a onclick="showView('inventory-view')">Inventory</a>
-        </div>
-    </nav>
-
-    <section id="home-view" class="view active">
-        <h1 style="font-size: 4rem; font-style: italic;">DOMINATE <span>TRADING</span></h1>
-        <p>The #1 hub for trading Death Ball blades and explosions.</p>
-        <div class="hero-btns">
-            <button class="btn" onclick="showView('market-view')">Browse Market</button>
-            <button class="btn" style="background: #333;" onclick="showView('inventory-view')">My Inventory</button>
-        </div>
-    </section>
-
-    <section id="market-view" class="view">
-        <div class="market-header">
-            <h2>Live Marketplace</h2>
-            <button class="btn btn-small" onclick="toggleForm()">+ List Item</button>
-        </div>
-
-        <div id="add-form" class="form-container" style="display: none;">
-            <h3>Create New Listing</h3>
-            <input type="text" id="itemName" placeholder="Item Name (e.g. Diamond Aegis)">
-            <input type="number" id="itemPrice" placeholder="Price (Gems)">
-            <select id="itemRarity">
-                <option value="Common">Common</option>
-                <option value="Rare">Rare</option>
-                <option value="Legendary">Legendary</option>
-                <option value="Godly">Godly</option>
-                <option value="Mythical">Mythical</option>
-                <option value="Mythical">Secret</option>
-            </select>
-            <button class="btn btn-small" onclick="addListing()">Post Listing</button>
-        </div>
-
-        <div class="grid" id="market-grid">
-            </div>
-    </section>
-
-    <section id="inventory-view" class="view">
-        <h2>Your Inventory</h2>
-        <p style="color: var(--text-dim);">You currently have no items listed or stored.</p>
-        <button class="btn btn-small" onclick="showView('market-view')">Go Shopping</button>
-    </section>
-
-    <script>
-        // Initial Data
-        let items = [
-            { name: "Sanguine Blade", price: "12,000", rarity: "Mythic", img: "🩸" },
-            { name: "Blood Explosion", price: "3,500", rarity: "Legendary", img: "💥" }
-        ];
-
-        // Navigation Function
-        function showView(viewId) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById(viewId).classList.add('active');
-        }
-
-        function toggleForm() {
-            const form = document.getElementById('add-form');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // Render the Market
-        function renderMarket() {
-            const grid = document.getElementById('market-grid');
-            grid.innerHTML = items.map((item, index) => `
-                <div class="item-card">
-                    <span class="item-icon">${item.img || '⚔️'}</span>
-                    <h3>${item.name}</h3>
-                    <div style="color: ${item.rarity === 'Mythic' ? 'red' : '#888'}">${item.rarity}</div>
-                    <span class="price">💰 ${item.price} GEMS</span>
-                    <button class="btn btn-small" onclick="buyItem(${index})">Buy Now</button>
-                </div>
-            `).join('');
-        }
-
-        // Add a new listing
-        function addListing() {
-            const name = document.getElementById('itemName').value;
-            const price = document.getElementById('itemPrice').value;
-            const rarity = document.getElementById('itemRarity').value;
-
-            if(name && price) {
-                items.unshift({ name, price, rarity, img: "🔥" });
-                renderMarket();
-                toggleForm(); // Hide form
-                alert("Listing Created!");
-            } else {
-                alert("Please fill in all fields.");
-            }
-        }
-
-        function buyItem(index) {
-            alert("Buying " + items[index].name + "...");
-        }
-
-        // Initial Load
-        renderMarket();
-    </script>
+    <nav><div class="logo">Death Ball Market</div></nav>
+    <div class="hero">
+        <h1>DOMINATE <span>TRADING</span></h1>
+        <p>THE #1 HUB FOR DEATH BALL TRADING</p>
+        <a href="market.html" class="btn">Enter Marketplace</a>
+    </div>
 </body>
 </html>
